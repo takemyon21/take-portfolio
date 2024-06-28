@@ -1,0 +1,97 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const socialImageURL = new URL('/images/preview.png', Astro.url)
+const siteName = "Take's Portfolio";
+const twitterCard = "summary_large_image";
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import { ViewTransitions } from "astro:transitions";
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+		<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- あとで消せ -->
+		<meta name="robots" content="noindex" />
+		<!-- あとで消せ -->
+
+    <!-- from here is TDK -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+    <!-- to here is TDK -->
+
+    <!-- from here is OGP -->
+    <meta property="og:type" content={Astro.url.pathname === '/' ? 'website' : 'article'} />
+    <meta property="og:description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:site_name" content={siteName} />
+    <meta name="twitter:card" content={twitterCard} />
+    <!-- to here is OGP -->
+
+    <meta name="theme-color" content="⑧サイトカラー（このサイトのカラー）" />
+
+    <!-- from here is favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <!-- to here is favicon -->
+
+    <link rel="canonical" href="④リンク（このページのURLを入力）" />
+
+    <!-- from here is css -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <!-- to here is css -->
+
+    <!-- Google tag (gtag.js) -->
+    <ViewTransitions />
+		<style is:global>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: black;
+      }
+    </style>
+
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	* {
+		font-family: 'Noto Sans JP, sans-serif';
+		color: #333;
+	}
+	html {
+	}
+	code {
+	}
+</style>
+
+
+<script>
+	import gsap from "gsap";
+
+  window.gsap = gsap;
+
+
+
+</script>

@@ -1,0 +1,241 @@
+---
+import Layout from '@layouts/Layout.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+
+
+// 投稿タイプ
+const postTypeInfo = 'works'
+// 1ページの表示最大数
+const perPageInfo = 10
+
+// 取得するのは最初の1ページ
+const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/v2/${postTypeInfo}?per_page=${perPageInfo}&orderby=date&order=desc`)
+
+// レスポンスヘッダーから合計記事数を取得
+// 取得したデータをjsonに変換
+const worksPosts = await worksRes.json()
+
+type worksProps = {
+	works_customFields: Array<{
+		works_title: string
+		works_time: string
+		works_thumbnail: string
+		works_url: string
+		works_detail: string
+	}>
+}
+
+---
+
+<Layout title="トップページ｜Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
+	<main class="w-[100%] mt-[50px] md:mt-[80px]">
+
+		<div class="fv max-w-[1200px] w-[100%] flex justify-center items-center gap-[48px] mx-auto">
+			<div class="fv__inner max-w-[300px] w-[100%] mx-auto md:mt-[80px] flex-shrink-0">
+				<!-- <FadeInSection /> -->
+				<!-- <h2 id="ease-in" class="text-[32px] fv__title relative"><span>T</span><span>a</span><span>k</span><span>e</span><span>'</span><span>s</span> <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span></h2> -->
+				<h2 id="ease-in" class="text-[32px] fv__title relative">Take's&nbsp;Portfolio</h2>
+				<div id="title" class="fv__text-wrapper">
+					<p id="upper-text" class="fv__text--upper block">Webサイトからサーバーまで。</p>
+					<p id="middle-text" class="fv__text--middle block">広い視点でお悩み解決いたします。</p>
+				</div>
+			</div>
+			<!-- FV swiper -->
+			<!-- Slider main container -->
+			<div class="swiper fv-slider block w-[41.6vw] h-[21.875vw] text-center flex-shrink-0" id="js-fv-slider">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper fv-slides w-[41.6vw] h-[21.875vw]">
+						<!-- Slides -->
+						{worksPosts.map((works: any) => (
+							<div class="swiper-slide fv-slide w-[41.6vw] h-[21.875vw] ">
+								<img class=" w-[41.6vw] h-[21.875vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
+							</div>
+						))}		
+				</div>
+			</div>
+		</div>
+
+		<section id="about" class="about max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
+			<div class="about__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
+				<SectionTitle title='About' description='' />
+				<p class="about__text">サーバーエンジニア(インフラ系)から転身したWebエンジニア。<br />
+					Webサイトの制作からサーバーの構築まで幅広く対応いたします。<br />
+					日々チャーハン(概念)を食べて生きている。
+				</p>
+				<dl class="flex gap-[16px]">
+					<dt class="about__term min-w-[70px]">Name:</dt>
+					<dd class="about__description">たけみょん</dd>
+				</dl>
+				<dl class="flex gap-[16px]">
+					<dt class="about__term min-w-[70px]">Job:</dt>
+					<dd class="about__description">フロントエンドエンジニア・サーバーエンジニア</dd>
+				</dl>
+				<dl class="flex gap-[16px]">
+					<dt class="about__term min-w-[70px]">Location:</dt>
+					<dd class="about__description">大阪の刃物の町</dd>
+				</dl>
+			</div>
+		</section>
+		
+		<section id="works" class="works max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
+			<div class="works__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
+				<SectionTitle title='Works' description='制作実績' />
+				<div class="works__list">
+					{worksPosts.map((works: any) => (
+						<div class="works__item">
+							<div class="works__thumbnail">
+								<img src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+							</div>
+							<div class="works__content">
+								<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
+								<p class="works__time">{works.works_customFields.works_time[0]}</p>
+								<Fragment class="works__detail" set:html={works.works_customFields.works_detail[0] }/>
+								<a href={works.works_customFields.works_url[0]} class="works__link">詳細を見る</a>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="contact max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
+			<div class="contact__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
+				<SectionTitle title='Contact' description='お問い合わせはこちらからお願いします。' />
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.fv__title,.fv__text--upper,.fv__text--middle {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 0.2px;
+
+	}
+
+
+	.fv__title span,
+	.fv__text--upper span,
+	.fv__text--middle span {
+	}
+
+
+  .fv-slider {
+	}
+
+	.fv-slides {
+		transition-timing-function: linear !important;
+	}
+
+
+	
+
+</style>
+
+
+<script is:inline>
+	document.addEventListener(
+		"astro:page-load",
+		() => {
+			const element = document.querySelector('[type="checkbox"]');
+			element?.addEventListener("change", () => {
+				if (element.checked) gsap.to(".box", { y: 200 });
+				else gsap.to(".box", { y: 0 });
+			});
+		},
+		{ once: false }
+
+	);
+
+	document.addEventListener( "astro:page-load", () => {
+
+		// 対象の要素を取得
+		const paragraphs = document.querySelectorAll(".fv__title, .fv__text--upper, .fv__text--middle");
+
+		// 各要素に対して処理を行う
+		paragraphs.forEach((paragraph) => {
+				// テキストコンテンツを取得
+				const textContent = paragraph.textContent;
+
+				// テキストコンテンツを一文字ずつ分割して<span>タグで囲んで新しい文字列を作成
+				const newTextContent = [...textContent]
+						.map((char) => `<span>${char}</span>`)
+						.join("");
+				
+				// 新しい文字列をHTMLに挿入
+				paragraph.innerHTML = newTextContent;
+		});
+
+
+		gsap.fromTo(
+			".fv__title span", // アニメーションさせる要素
+			{
+				autoAlpha: 0, // アニメーション開始前は透明
+				y: 20, // 20px下に移動
+			},
+			{
+				autoAlpha: 1, // アニメーション後は出現(透過率0)
+				y: 0, // 20px上に移動
+				stagger: 0.15, // 0.2秒遅れて順番に再生
+			}
+		);
+
+		gsap.fromTo(
+			".fv__text--upper span", // アニメーションさせる要素
+			{
+				delay: 3,
+				autoAlpha: 0, // アニメーション開始前は透明
+				y: 20, // 20px下に移動
+			},
+			{
+				delay: 3,
+				autoAlpha: 1, // アニメーション後は出現(透過率0)
+				y: 0, // 20px上に移動
+				stagger: 0.15, // 0.2秒遅れて順番に再生
+			}
+		);
+
+		gsap.fromTo(
+			".fv__text--middle span", // アニメーションさせる要素
+			{
+				delay: 6,
+				autoAlpha: 0, // アニメーション開始前は透明
+				y: 20, // 20px下に移動
+			},
+			{
+				delay: 6,
+				autoAlpha: 1, // アニメーション後は出現(透過率0)
+				y: 0, // 20px上に移動
+				stagger: 0.15, // 0.2秒遅れて順番に再生
+			}
+		);
+
+	});
+
+
+</script>
+
+<script>
+import Swiper from 'swiper/bundle';
+	import 'swiper/css/bundle';
+
+	// Swiperの設定
+	const swiperConfig = {
+		loop: true,
+		speed: 4000,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
+		},
+		effect: 'cube',
+		centeredSlides: true,
+		slidesPerView: 2.5,
+		spaceBetween: 0,
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		new Swiper('.swiper', swiperConfig);
+	});
+</script>

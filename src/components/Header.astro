@@ -1,0 +1,93 @@
+---
+// Header.astro
+
+---
+
+<header class="fixed top-0 left-0 w-[100%] h-[50px] md:h-[80px] z-[9999]">
+  <div class="header__inner h-inherit max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto flex justify-between items-center">
+    <h1 class="Header__logo text-[20px]">Take's Portfolio</h1>
+    <nav class="header__nav hidden md:flex justify-end items-center gap-[24px]">
+      <a href="#about" class="">About</a>
+      <a href="#works" class="">Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="drawers__wrapper flex flex-col items-end md:hidden">
+      <div id="js-drawer-icon" class="drawer__icon w-[20px] h-[20px] md:hidden flex flex-col gap-[4px] justify-center items-center">
+        <span class="h-[2px] w-[20px] rounded-[1px] bg-[#333]"></span>
+        <span class="h-[2px] w-[20px] rounded-[1px] bg-[#333]"></span>
+        <span class="h-[2px] w-[20px] rounded-[1px] bg-[#333]"></span>
+      </div>
+      <div id="js-drawer-menu" class="md:hidden drawer__menu fixed top-[50px] w-inherit mx-auto bg-[#fff] rounded-md border border-[#888]">
+        <nav class="drawer__nav flex flex-col justyfy-center items-center px-[8px]">
+          <a href="#about" class="block py-[16px]">- About -</a>
+          <a href="#works" class="block py-[16px]">- Works -</a>
+          <a href="#contact" class="block py-[16px]">- Contact -</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .drawer__icon {
+    cursor: pointer;
+    & > span {
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+  }
+
+  .drawer__icon.open {
+
+    & > span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    & > span:nth-child(2) {
+      opacity: 0;
+    }
+    & > span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+  }
+
+  .drawer__menu {
+    transform: translateY(-300px);
+    animation: slideOut 0.3s ease-in-out;
+  }
+
+  .drawer__menu.open__menu {
+    animation: slideIn 0.3s ease-in-out;
+    transform: translateY(0);
+  }
+</style>
+
+<script is:inline>
+  const drawerIcon = document.getElementById('js-drawer-icon');
+  const drawerMenu = document.getElementById('js-drawer-menu');
+
+  drawerIcon.addEventListener('click', () => {
+    drawerIcon.classList.toggle('open');
+    drawerMenu.classList.toggle('open__menu');
+  });
+</script>
