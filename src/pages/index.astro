@@ -1,4 +1,5 @@
 ---
+
 import Layout from '@layouts/Layout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
 import ShowHtml from '../components/ShowHtml.jsx';
@@ -29,15 +30,12 @@ type worksProps = {
 
 <Layout title="トップページ｜Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
 	<main class="w-[100%] mt-[50px] md:mt-[80px]">
-
 		<div class="fv max-w-[1024px] w-[100%] px-[16px] md:px-[40px] flex flex-col md:flex-row justify-center items-center gap-[16px] md:gap-[48px] mx-auto">
-			<div class="fv__text-content max-w-[300px] w-[100%] mx-auto">
-				<!-- <FadeInSection /> -->
-				<!-- <h2 id="ease-in" class="text-[32px] fv__title relative"><span>T</span><span>a</span><span>k</span><span>e</span><span>'</span><span>s</span> <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span></h2> -->
-				<h2 id="ease-in" class="text-[32px] fv__title relative flex justify-start items-center gap-[0.2px] font-bold">Take's&nbsp;Portfolio</h2>
+			<div class="fv__text-content inline-block max-w-[473px] w-[100%] mx-auto z-[100] pt-[30px] pb-[30px] pl-[30px] pr-[45px] shadow-xl rounded-[30px] bg-white">
+				<h2 id="ease-in" class="text-[48px] fv__title relative flex justify-start items-center gap-[0.2px] font-bold">Take's&nbsp;Portfolio</h2>
 				<div id="title" class="fv__text-wrapper">
-					<p id="upper-text" class="fv__text--upper flex justify-start items-center gap-[0.2px]">Webサイトからサーバーまで。</p>
-					<p id="middle-text" class="fv__text--middle flex justify-start items-center gap-[0.2px]">広い視点でお悩み解決いたします。</p>
+					<p id="upper-text" class="fv__text--upper text-[20px] flex justify-start items-center gap-[0.2px]">Webサイトからサーバーまで。</p>
+					<p id="middle-text" class="fv__text--middle text-[20px] flex justify-start items-center gap-[0.2px]">広い視点でお悩み解決いたします。</p>
 				</div>
 			</div>
 			<!-- FV swiper -->
@@ -104,7 +102,7 @@ type worksProps = {
 				{worksPosts.map((works: any) => (
 					<li class="swiper-slide works__slide works__item pl-[30px]">
 						<div class="works__thumbnail">
-							<img class="max-h-[350px]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+							<img class="max-h-[350px] shadow-xl" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
 						</div>
 						<div class="works__content">
 							<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
@@ -145,6 +143,10 @@ type worksProps = {
 </Layout>
 
 <style is:inline>
+	.fv__slider {
+		margin-left: -150px;
+	}
+
 	.swiper-slide img {
 		user-drag: none;
 		-webkit-user-drag: none;
@@ -265,9 +267,9 @@ import Swiper from 'swiper/bundle';
 			768: {
 				slidesPerView: 2.2,
 			},
-			// 1024: {
-			// 	slidesPerView: 3.5,
-			// },
+			1024: {
+				slidesPerView: 3,
+			},
 		}
 	};
 
