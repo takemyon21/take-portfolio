@@ -22,9 +22,11 @@
     "node": "20.9.0"
   },
   "devDependencies": {
+    "@astrojs/react": "^3.6.0",
     "@types/gsap": "^3.0.0",
     "@types/swiper": "^6.0.0",
     "gsap": "^3.12.5",
+    "react": "^18.3.1",
     "solid-js": "^1.8.17",
     "swiper": "^11.1.4"
   }

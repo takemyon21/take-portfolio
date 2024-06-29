@@ -7,7 +7,7 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "typeRoots": ["./node_modules/@types"],
-      "types": ["gsap"]  
+      "types": ["gsap"]
     }
   }
 }

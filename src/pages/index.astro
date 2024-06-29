@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
-
+import ShowHtml from '../components/ShowHtml.jsx';
 
 // 投稿タイプ
 const postTypeInfo = 'works'
@@ -30,73 +30,94 @@ type worksProps = {
 <Layout title="トップページ｜Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
 	<main class="w-[100%] mt-[50px] md:mt-[80px]">
 
-		<div class="fv max-w-[1200px] w-[100%] flex justify-center items-center gap-[48px] mx-auto">
-			<div class="fv__inner max-w-[300px] w-[100%] mx-auto md:mt-[80px] flex-shrink-0">
+		<div class="fv max-w-[1024px] w-[100%] px-[16px] md:px-[40px] flex flex-col md:flex-row justify-center items-center gap-[16px] md:gap-[48px] mx-auto">
+			<div class="fv__text-content max-w-[300px] w-[100%] mx-auto">
 				<!-- <FadeInSection /> -->
 				<!-- <h2 id="ease-in" class="text-[32px] fv__title relative"><span>T</span><span>a</span><span>k</span><span>e</span><span>'</span><span>s</span> <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span></h2> -->
-				<h2 id="ease-in" class="text-[32px] fv__title relative">Take's&nbsp;Portfolio</h2>
+				<h2 id="ease-in" class="text-[32px] fv__title relative flex justify-start items-center gap-[0.2px] font-bold">Take's&nbsp;Portfolio</h2>
 				<div id="title" class="fv__text-wrapper">
-					<p id="upper-text" class="fv__text--upper block">Webサイトからサーバーまで。</p>
-					<p id="middle-text" class="fv__text--middle block">広い視点でお悩み解決いたします。</p>
+					<p id="upper-text" class="fv__text--upper flex justify-start items-center gap-[0.2px]">Webサイトからサーバーまで。</p>
+					<p id="middle-text" class="fv__text--middle flex justify-start items-center gap-[0.2px]">広い視点でお悩み解決いたします。</p>
 				</div>
 			</div>
 			<!-- FV swiper -->
 			<!-- Slider main container -->
-			<div class="swiper fv-slider block w-[41.6vw] h-[21.875vw] text-center flex-shrink-0" id="js-fv-slider">
+			<div class="swiper fv__slider block max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] overflow-hidden text-center flex-shrink-0" id="js-fv-slider">
 				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper fv-slides w-[41.6vw] h-[21.875vw]">
+				<div class="swiper-wrapper fv__slides max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] transition !ease-linear">
 						<!-- Slides -->
 						{worksPosts.map((works: any) => (
-							<div class="swiper-slide fv-slide w-[41.6vw] h-[21.875vw] ">
-								<img class=" w-[41.6vw] h-[21.875vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
+							<div class="swiper-slide fv__slide max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw]">
+								<img class="max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
 							</div>
-						))}		
+						))}
 				</div>
 			</div>
 		</div>
 
 		<section id="about" class="about max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="about__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
-				<SectionTitle title='About' description='' />
-				<p class="about__text">サーバーエンジニア(インフラ系)から転身したWebエンジニア。<br />
-					Webサイトの制作からサーバーの構築まで幅広く対応いたします。<br />
-					日々チャーハン(概念)を食べて生きている。
-				</p>
-				<dl class="flex gap-[16px]">
-					<dt class="about__term min-w-[70px]">Name:</dt>
-					<dd class="about__description">たけみょん</dd>
-				</dl>
-				<dl class="flex gap-[16px]">
-					<dt class="about__term min-w-[70px]">Job:</dt>
-					<dd class="about__description">フロントエンドエンジニア・サーバーエンジニア</dd>
-				</dl>
-				<dl class="flex gap-[16px]">
-					<dt class="about__term min-w-[70px]">Location:</dt>
-					<dd class="about__description">大阪の刃物の町</dd>
-				</dl>
+				<SectionTitle title='About' description='たけみょんについて' />
+				<div class="about__contents flex flex-col-reverse md:flex-row justify-center items-start gap-[40px] mt-[32px]">
+					<div class="about__left-contents">
+						<p class="about__text">サーバーエンジニア(インフラ系)から転身したWebエンジニア。<br />
+							Webサイトの制作からサーバーの構築まで幅広く対応いたします。<br />
+							日々チャーハン(概念)を食べて生きている。
+						</p>
+						<div class="about__profile flex flex-col gap-[12px]">
+							<dl class="flex gap-[16px] mt-[16px]">
+								<dt class="about__term min-w-[90px] font-bold">Name:</dt>
+								<dd class="about__description">たけみょん</dd>
+							</dl>
+							<dl class="flex gap-[16px]">
+								<dt class="about__term min-w-[90px] font-bold">Job:</dt>
+								<dd class="about__description">フロントエンドエンジニア・サーバーエンジニア</dd>
+							</dl>
+							<dl class="flex gap-[16px]">
+								<dt class="about__term min-w-[90px] font-bold">Location:</dt>
+								<dd class="about__description">大阪の刃物の町</dd>
+							</dl>
+							<dl class="flex gap-[16px]">
+								<dt class="about__term min-w-[90px] font-bold">Skill:</dt>
+								<dd class="about__description">HTML CSS(Sass・Tailwind CSS) PHP WordPress Astro</dd>
+							</dl>
+							<dl class="flex gap-[16px]">
+								<dt class="about__term min-w-[90px] font-bold">Certifying:</dt>
+								<dd class="about__description">基本情報技術者・CompTIA A+/Network+/Server+</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="about__right-contents">
+						<img class="md:max-w-[250px] w-[100%]" src="/images/take_icon.jpg" alt="たけみょんの写真" />
+					</div>
+				</div>
 			</div>
 		</section>
 		
 		<section id="works" class="works max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="works__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
 				<SectionTitle title='Works' description='制作実績' />
-				<div class="works__list">
-					{worksPosts.map((works: any) => (
-						<div class="works__item">
-							<div class="works__thumbnail">
-								<img src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
-							</div>
-							<div class="works__content">
-								<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
-								<p class="works__time">{works.works_customFields.works_time[0]}</p>
-								<Fragment class="works__detail" set:html={works.works_customFields.works_detail[0] }/>
-								<a href={works.works_customFields.works_url[0]} class="works__link">詳細を見る</a>
-							</div>
-						</div>
-					))}
-				</div>
 			</div>
 		</section>
+		<div class="swiper works__slider works-slider w-[100%] h-[50vw] md:h-[35vw] md:max-h-[500px] mt-[32px]">
+			<ul class="swiper-wrapper works__slides works__list">
+				{worksPosts.map((works: any) => (
+					<li class="swiper-slide works__slide works__item pl-[30px]">
+						<div class="works__thumbnail">
+							<img class="max-h-[350px]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+						</div>
+						<div class="works__content">
+							<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
+						</div>
+					</li>
+				))}
+			</ul>
+			<div class="works-slider__buttons absolute bottom-[0] max-w-[440px] md:max-w-[1024px] px-[16px] h-[80px] md:px-[40px] w-[100%] left-[50%] transform -translate-x-[50%] z-[100]">
+				<!-- 戻る・進むボタン -->
+				<div class="swiper-button-prev works-slider__prev-button mt-[120px] md:mt-[420px]"></div>
+				<div class="swiper-button-next works-slider__next-button mt-[120px] md:mt-[420px]"></div>
+			</div>
+		</div>
 
 		<section id="contact" class="contact max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="contact__inner max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto mt-[50px] md:mt-[80px]">
@@ -104,50 +125,40 @@ type worksProps = {
 			</div>
 		</section>
 	</main>
+	<!-- 下記はテンプレート。カスタムフィールド全体取得する -->
+	<!-- {worksPosts.map((works: any) => (
+		<li class="works__item">
+			<div class="works__thumbnail">
+				<img src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+			</div>
+			<div class="works__content">
+				<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
+				<p class="works__time">{works.works_customFields.works_time[0]}</p>
+				<div class="works__detail">
+					<ShowHtml html={works.works_customFields.works_detail[0]} />
+				</div>
+				<a href={works.works_customFields.works_url[0]} class="works__link">{works.works_customFields.works_url[0]} </a>
+			</div>
+		</li>
+	))} -->
+
 </Layout>
 
-<style>
-	.fv__title,.fv__text--upper,.fv__text--middle {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		gap: 0.2px;
-
+<style is:inline>
+	.swiper-slide img {
+		user-drag: none;
+		-webkit-user-drag: none;
+		-moz-user-select: none;
 	}
 
-
-	.fv__title span,
-	.fv__text--upper span,
-	.fv__text--middle span {
+	.works__detail h2 {
+		font-size: 20px;
+		font-style: italic;
+		font-weight: bold;
 	}
-
-
-  .fv-slider {
-	}
-
-	.fv-slides {
-		transition-timing-function: linear !important;
-	}
-
-
-	
-
 </style>
 
-
 <script is:inline>
-	document.addEventListener(
-		"astro:page-load",
-		() => {
-			const element = document.querySelector('[type="checkbox"]');
-			element?.addEventListener("change", () => {
-				if (element.checked) gsap.to(".box", { y: 200 });
-				else gsap.to(".box", { y: 0 });
-			});
-		},
-		{ once: false }
-
-	);
 
 	document.addEventListener( "astro:page-load", () => {
 
@@ -156,18 +167,15 @@ type worksProps = {
 
 		// 各要素に対して処理を行う
 		paragraphs.forEach((paragraph) => {
-				// テキストコンテンツを取得
-				const textContent = paragraph.textContent;
-
-				// テキストコンテンツを一文字ずつ分割して<span>タグで囲んで新しい文字列を作成
-				const newTextContent = [...textContent]
-						.map((char) => `<span>${char}</span>`)
-						.join("");
-				
-				// 新しい文字列をHTMLに挿入
-				paragraph.innerHTML = newTextContent;
+			// テキストコンテンツを取得
+			const textContent = paragraph.textContent;
+			// テキストコンテンツを一文字ずつ分割して<span>タグで囲んで新しい文字列を作成
+			const newTextContent = [...textContent]
+				.map((char) => `<span>${char}</span>`)
+				.join("");
+			// 新しい文字列をHTMLに挿入
+			paragraph.innerHTML = newTextContent;
 		});
-
 
 		gsap.fromTo(
 			".fv__title span", // アニメーションさせる要素
@@ -211,10 +219,7 @@ type worksProps = {
 				stagger: 0.15, // 0.2秒遅れて順番に再生
 			}
 		);
-
 	});
-
-
 </script>
 
 <script>
@@ -222,9 +227,10 @@ import Swiper from 'swiper/bundle';
 	import 'swiper/css/bundle';
 
 	// Swiperの設定
-	const swiperConfig = {
+	const fvSwiperConfig = {
 		loop: true,
 		speed: 4000,
+		allowTouchMove: false,
 		autoplay: {
 			delay: 0,
 			disableOnInteraction: false,
@@ -236,6 +242,37 @@ import Swiper from 'swiper/bundle';
 	};
 
 	document.addEventListener('DOMContentLoaded', () => {
-		new Swiper('.swiper', swiperConfig);
+		new Swiper('.fv__slider', fvSwiperConfig);
 	});
+
+	// Swiperの設定
+	const worksSwiperConfig = {
+		loop: true,
+		speed: 500,
+		// autoplay: {
+		// 	delay: 0,
+		// 	disableOnInteraction: false,
+		// },
+		effect: 'slide',
+		centeredSlides: true,
+		slidesPerView: 1.5,
+		spaceBetween: 30,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+	  },
+		breakpoints: {
+			768: {
+				slidesPerView: 2.2,
+			},
+			// 1024: {
+			// 	slidesPerView: 3.5,
+			// },
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		new Swiper('.works__slider', worksSwiperConfig);
+	});
+
 </script>
