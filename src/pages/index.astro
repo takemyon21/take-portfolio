@@ -28,7 +28,7 @@ type worksProps = {
 
 ---
 
-<Layout title="トップページ｜Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
+<Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
 	<main class="w-[100%] mt-[50px] md:mt-[80px]">
 		<div class="fv max-w-[440px] md:max-w-[1024px] w-[100%] px-[16px] md:px-[40px] flex flex-col md:flex-row justify-center items-start md:items-center gap-[16px] md:gap-[48px] mx-auto">
 			<div class="fv__text-content inline-block max-w-[240px] md:max-w-[360px] w-[100%] z-[100] p-[16px] md:p-[30px] shadow-xl rounded-[16px] md:rounded-[30px] bg-white flex-shrink-0">
@@ -40,13 +40,13 @@ type worksProps = {
 			</div>
 			<!-- FV swiper -->
 			<!-- Slider main container -->
-			<div class="swiper fv__slider max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] mt-[-60px] md:mt-0 ml-0 md:!ml-[-150px] flex-shrink-0" id="js-fv-slider">
+			<div class="swiper fv__slider max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] mt-[-60px] md:mt-0 ml-0 md:!ml-[-7vw] flex-shrink-0" id="js-fv-slider">
 				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper fv__slides max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] transition !ease-linear">
+				<div class="swiper-wrapper fv__slides max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] transition !ease-linear">
 						<!-- Slides -->
 						{worksPosts.map((works: any) => (
-							<div class="swiper-slide fv__slide max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw]">
-								<img class="max-w-[400px] max-h-[210px] md:max-w-[41.6vw] md:max-h-[21.875vw] md:w-[100%] md:h-[100%] w-[83.2vw] h-[43.75vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
+							<div class="swiper-slide fv__slide min-w-[300px] min-h-[157.5px] md:min-w-[400px] md:max-w-[750px] md:max-h-[393.75px] md:min-h-[210px] w-[83.2vw] h-[43.75vw]">
+								<img class="max-w-[300px] max-h-[157.5px] md:min-w-[400px] md:min-h-[210px] md:max-w-[750px] md:max-h-[393.75px] w-[83.2vw] h-[43.75vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
 							</div>
 						))}
 				</div>
