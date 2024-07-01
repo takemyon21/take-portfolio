@@ -13,8 +13,13 @@ const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/
 
 // レスポンスヘッダーから合計記事数を取得
 // 取得したデータをjsonに変換
-const worksPosts = await worksRes.json();
-
+if (worksRes.ok) {
+  const worksPosts = await worksRes.json();
+  // データの処理
+} else {
+  // エラーハンドリング
+  console.error(`HTTPエラー ${worksRes.status}`);
+}
 ---
 
 <Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
