@@ -16,16 +16,6 @@ const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/
 // 取得したデータをjsonに変換
 const worksPosts = await worksRes.json()
 
-type worksProps = {
-	works_customFields: Array<{
-		works_title: string
-		works_time: string
-		works_thumbnail: string
-		works_url: string
-		works_detail: string
-	}>
-}
-
 ---
 
 <Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
