@@ -13,6 +13,7 @@ export default defineConfig({
     // 開発サーバーが立ち上がったらブラウザを自動で開かせる
     open: true
   },
-  output: 'server',
-  adapter: cloudflare()
+  // output: 'server',
+  // adapter: cloudflare()
+  output: 'static'
 })
