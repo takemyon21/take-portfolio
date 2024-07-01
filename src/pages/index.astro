@@ -4,16 +4,16 @@ import SectionTitle from '@components/SectionTitle.astro';
 import ShowHtml from '../components/ShowHtml.jsx';
 
 // 投稿タイプ
-const postTypeInfo = 'works'
+const postTypeInfo = 'works';
 // 1ページの表示最大数
-const perPageInfo = 10
+const perPageInfo = 10;
 
 // 取得するのは最初の1ページ
-const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/v2/${postTypeInfo}?per_page=${perPageInfo}&orderby=date&order=desc`)
+const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/v2/${postTypeInfo}?per_page=${perPageInfo}&orderby=date&order=desc`);
 
 // レスポンスヘッダーから合計記事数を取得
 // 取得したデータをjsonに変換
-const worksPosts = await worksRes.json()
+const worksPosts = await worksRes.json();
 ---
 
 <Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
@@ -30,7 +30,7 @@ const worksPosts = await worksRes.json()
 			<!-- Slider main container -->
 			<div class="swiper fv__slider max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] mt-[-60px] md:mt-0 ml-0 md:!ml-[clamp(-25rem,-35.4167rem+21.7014vw,-9.375rem)] flex-shrink-0" id="js-fv-slider">
 				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper fv__slides max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] transition !ease-linear">
+				<div class="swiper-wrapper fv__slides max-w-[300px] mx-auto max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] transition !ease-linear">
 						<!-- Slides -->
 						{worksPosts.map((works: any) => (
 							<div class="swiper-slide fv__slide min-w-[300px] min-h-[157.5px] md:min-w-[400px] md:max-w-[750px] md:max-h-[393.75px] md:min-h-[210px] w-[83.2vw] h-[43.75vw]">
