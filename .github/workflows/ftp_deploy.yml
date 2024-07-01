@@ -5,7 +5,7 @@ on:
 jobs:
   web-deploy:
     name: Deploy
-    runs-on: Windows11-latest
+    runs-on: Ubuntu-latest
     steps:
       - name: Get latest code
         uses: actions/checkout@v3
