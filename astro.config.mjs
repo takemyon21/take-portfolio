@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
+import cloudflare from '@astrojs/cloudflare'
 
+//
 // https://astro.build/config
-// export default defineConfig({});
 export default defineConfig({
   integrations: [tailwind(), react()],
   server: {
@@ -11,5 +12,7 @@ export default defineConfig({
     host: true,
     // 開発サーバーが立ち上がったらブラウザを自動で開かせる
     open: true
-  }
+  },
+  output: 'server',
+  adapter: cloudflare()
 })
