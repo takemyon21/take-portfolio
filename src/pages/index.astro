@@ -9,7 +9,7 @@ const postTypeInfo = 'works';
 const perPageInfo = 10;
 
 // 取得するのは最初の1ページ
-const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/v2/${postTypeInfo}?per_page=${perPageInfo}&orderby=date&order=desc`);
+const worksRes = await fetch(`http://www.itouke.info/take-portfolio/wp-json/wp/v2/works?orderby=date&order=desc`);
 
 // レスポンスヘッダーから合計記事数を取得
 // 取得したデータをjsonに変換
