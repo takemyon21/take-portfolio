@@ -1,5 +1,4 @@
 ---
-
 import Layout from '@layouts/Layout.astro';
 import SectionTitle from '@components/SectionTitle.astro';
 import ShowHtml from '../components/ShowHtml.jsx';
@@ -15,7 +14,6 @@ const worksRes = await fetch(`https://www.itouke.info/take-portfolio/wp-json/wp/
 // レスポンスヘッダーから合計記事数を取得
 // 取得したデータをjsonに変換
 const worksPosts = await worksRes.json()
-
 ---
 
 <Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
