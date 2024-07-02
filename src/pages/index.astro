@@ -5,21 +5,15 @@ import ShowHtml from '../components/ShowHtml.jsx';
 
 // 投稿タイプ
 const postTypeInfo = 'works';
-// 1ページの表示最大数
-const perPageInfo = 10;
+// // 1ページの表示最大数
+// const perPageInfo = 10;
 
 // 取得するのは最初の1ページ
-const worksRes = await fetch(`http://www.itouke.info/take-portfolio/wp-json/wp/v2/works?orderby=date&order=desc`);
+const worksRes = await fetch(`http://itouke.wpx.jp/tw-wordpress/wp-json/wp/v2/${postTypeInfo}?orderby=date&order=desc`);
 
 // レスポンスヘッダーから合計記事数を取得
 // 取得したデータをjsonに変換
-if (worksRes.ok) {
-  const worksPosts = await worksRes.json();
-  // データの処理
-} else {
-  // エラーハンドリング
-  console.error(`HTTPエラー ${worksRes.status}`);
-}
+const worksPosts = await worksRes.json();
 ---
 
 <Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
@@ -49,11 +43,12 @@ if (worksRes.ok) {
 
 		<section id="about" class="about max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="about__inner w-[100%] px-[20px] md:px-[40px] mx-auto">
-				<SectionTitle title='About' description='たけみょんについて' />
+				<SectionTitle title='― About' description='たけみょんについて' />
 				<div class="about__contents flex flex-col-reverse md:flex-row justify-center items-start gap-[40px] mt-[32px]">
 					<div class="about__left-contents">
 						<div class="about__sp-upper-contents flex gap-[16px]">
-							<p class="about__text about__sp-upper-text text-[14px] md:text-[16px]">サーバーエンジニア(インフラ系)から転身したWebエンジニア。<br />
+							<p class="about__text about__sp-upper-text text-[14px] md:text-[16px]">
+								サーバーエンジニア(インフラ系)から転身したWebエンジニア。<br />
 								Webサイトの制作からサーバーの構築まで幅広く対応いたします。<br />
 								日々チャーハン(概念)を食べて生きている。
 							</p>
@@ -93,7 +88,7 @@ if (worksRes.ok) {
 
 		<section id="works" class="works max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="works__inner px-[20px] md:px-[40px] w-[100%] mx-auto">
-				<SectionTitle title='Works' description='制作実績' />
+				<SectionTitle title='― Works' description='制作実績' />
 			</div>
 		</section>
 		<div class="swiper works__slider works-slider !px-[20px] w-[100%] max-w-[440px] md:max-w-[100%] h-[300px] md:h-[350px] mt-[32px] hidden md:block">
@@ -101,7 +96,7 @@ if (worksRes.ok) {
 				{worksPosts.map((works: any, index: any) => (
 					<li class="swiper-slide works__slide works__item" id={index}>
 						<div class="works__thumbnail max-w-[500px]">
-							<img class="shadow-xl" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+							<img class="shadow-xl aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
 						</div>
 						<div class="works__content">
 							<h3 class="works__title text-[14px] md:text-[16px]">{works.works_customFields.works_title[0]}</h3>
@@ -116,9 +111,72 @@ if (worksRes.ok) {
 			</div>
 		</div>
 
+		<section id="work-flow" class="work-flow max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
+			<div class="work-flow__inner px-[20px] md:px-[40px] w-[100%] mx-auto">
+				<SectionTitle title='― Work Flow' description='お仕事の流れ' />
+				<p class="mt-[32px]">
+					以下は大まかなお仕事の流れです。詳細はお気軽にご相談ください。
+				</p>
+				<ul class="mt-[56px] flex flex-wrap justify-center items-center gap-[8px]">
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+							1
+						</span>
+						<figure class="flex flex-col justify-center items-center gap-[8px]">
+							<img class="h-[69px] aspect-[49/66]" src="/images/img_flow1.svg" alt="ご相談・お見積り" width="49" height="66" />
+							<figcaption class="font-bold text-[18px]">ご相談・お見積り</figcaption>
+						</figure>
+						<p>
+							要件や納期、予算などお気軽にご相談ください。<br />
+							対応内容に応じてお見積りをお送りいたします。
+						</p>
+					</li>
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+							2
+						</span>
+						<figure class="flex flex-col justify-center items-center gap-[8px]">
+							<img class="h-[69px] aspect-[86/69]" src="/images/img_flow2.svg" alt="コーディング" width="86" height="69" />
+							<figcaption class="font-bold text-[18px]">コーディング</figcaption>
+						</figure>
+						<p>
+							デザインカンプを元にコーディングを行います。<br />
+							コーディング後は品質チェックを行い調整します。
+						</p>
+					</li>
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+							3
+						</span>
+						<figure class="flex flex-col justify-center items-center gap-[8px]">
+							<img class="h-[69px] aspect-[66/66]" src="/images/img_flow3.svg" alt="確認" width="66" height="66" />
+							<figcaption class="font-bold text-[18px]">確認</figcaption>
+						</figure>
+						<p>
+							お客様にコーディングしたサイトをご確認頂きます。<br />
+							不足部分の修正と対応を行います。
+						</p>
+					</li>
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+							4
+						</span>
+						<figure class="flex flex-col justify-center items-center gap-[8px]">
+							<img class="h-[69px] aspect-[64/64]" src="/images/img_flow4.svg" alt="納品" width="64" height="64" />
+							<figcaption class="font-bold text-[18px]">納品</figcaption>
+						</figure>
+						<p>
+							コーディング後のファイル一式を納品いたします。<br />
+							本番サーバーへのアップロードも対応可能です。
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
 		<section id="contact" class="contact max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="contact__inner px-[20px] md:px-[40px] w-[100%] mx-auto">
-				<SectionTitle title='Contact' description='お問い合わせはこちらからお願いします。' />
+				<SectionTitle title='― Contact' description='お問い合わせはこちらからお願いします。' />
 			</div>
 		</section>
 	</main>
