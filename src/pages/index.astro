@@ -91,6 +91,7 @@ const worksPosts = await worksRes.json();
 				<SectionTitle title='― Works' description='制作実績' />
 			</div>
 		</section>
+		<!-- ここはモーダルで表示させる -->
 		<div class="swiper works__slider works-slider !px-[20px] w-[100%] max-w-[440px] md:max-w-[100%] h-[300px] md:h-[350px] mt-[32px] hidden md:block">
 			<ul class="swiper-wrapper works__slides works__list w-[100%]">
 				{worksPosts.map((works: any, index: any) => (
