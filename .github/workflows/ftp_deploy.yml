@@ -23,9 +23,7 @@ jobs:
 
       - name: Set WordPress environment variables
         run: |
-          echo WP_REST_API_URL="${!secrets.WP_REST_API_URL}"
-          echo WP_REST_API_PASSWORD="${!secrets.FTP_PASSWORD}"  # 修正箇所 (typo)
-          export WP_REST_API_URL WP_REST_API_PASSWORD
+          export ${{ secrets.WP_REST_API_URL }} ${{ secrets.WP_REST_API_PASSWORD }}
           
       - name: Build the project and fetch data
         run: |
