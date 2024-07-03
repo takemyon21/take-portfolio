@@ -2,7 +2,7 @@ name: Astro Deploy website on push
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   web-deploy:
@@ -23,15 +23,10 @@ jobs:
 
       - name: Set WordPress environment variables
         run: |
-          # Option 1 (using double quotes):
+          # Option 1 (using double quotes, recommended):
           echo WP_REST_API_URL="${core.secrets.get('WP_REST_API_URL')}"
-          echo WP_REST_API_PASSWORD=core.secrets.get('WP_REST_API_PASSWORD')
+          echo WP_REST_API_PASSWORD="${core.secrets.get('WP_REST_API_PASSWORD')}"
           export WP_REST_API_URL WP_REST_API_PASSWORD
-
-          # Option 2 (without quotes, less recommended):
-          # echo WP_REST_API_URL=core.secrets.get(WP_REST_API_URL)
-          # echo WP_REST_API_PASSWORD=core.secrets.get(WP_REST_API_PASSWORD)
-          # export WP_REST_API_URL WP_REST_API_PASSWORD
 
       - name: Build the project and fetch data
         run: |
