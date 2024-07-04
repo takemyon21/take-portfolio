@@ -34,7 +34,7 @@ const worksPosts = await worksRes.json();
 						<!-- Slides -->
 						{worksPosts.map((works: any) => (
 							<div class="swiper-slide fv__slide min-w-[300px] min-h-[157.5px] md:min-w-[400px] md:max-w-[750px] md:max-h-[393.75px] md:min-h-[210px] w-[83.2vw] h-[43.75vw]">
-								<img class="max-w-[300px] max-h-[157.5px] md:min-w-[400px] md:min-h-[210px] md:max-w-[750px] md:max-h-[393.75px] w-[83.2vw] h-[43.75vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
+								<img height="1200" width="630" class="max-w-[300px] max-h-[157.5px] md:min-w-[400px] md:min-h-[210px] md:max-w-[750px] md:max-h-[393.75px] w-[83.2vw] h-[43.75vw] object-cover aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]}/>
 							</div>
 						))}
 				</div>
@@ -91,35 +91,37 @@ const worksPosts = await worksRes.json();
 				<SectionTitle title='― Works' description='制作実績' />
 			</div>
 		</section>
-		<!-- ここはモーダルで表示させる -->
-		<div class="swiper works__slider works-slider !px-[20px] w-[100%] max-w-[440px] md:max-w-[100%] h-[300px] md:h-[350px] mt-[32px] hidden md:block">
-			<ul class="swiper-wrapper works__slides works__list w-[100%]">
+		<div class="swiper works__slider works-slider relative !px-[20px] w-[100%] max-w-[440px] md:max-w-[100%] h-[260px] md:h-[360px] mt-[32px]">
+			<ul class="swiper-wrapper works__slides works__list w-[100%] md:!w-[1920px]">
 				{worksPosts.map((works: any, index: any) => (
-					<li class="swiper-slide works__slide works__item" id={index}>
-						<div class="works__thumbnail max-w-[500px]">
-							<img class="shadow-xl aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+					<li class="swiper-slide modal-open works__slide works__item cursor-pointer" data-modal={index}>
+						<div class="works__thumbnail max-w-[300px] md:min-w-[500px] w-[100%] mx-auto">
+							<img class="shadow-xl aspect-[1200/630]" height="1200" width="630" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
 						</div>
-						<div class="works__content">
+						<div class="works__content mt-[16px] max-w-[300px] md:max-w-[500px] mx-auto">
 							<h3 class="works__title text-[14px] md:text-[16px]">{works.works_customFields.works_title[0]}</h3>
+						</div>
+						<div class="works__button open mt-[16px] max-w-[300px] md:max-w-[500px] mx-auto flex justify-start items-center gap-[16px]">
+							<p class="text-[14px] md:text-[16px]">詳しく見る</p>
+							<svg class="works__arrow" xmlns="http://www.w3.org/2000/svg" width="40" height="4.252" viewBox="0 0 200 21.259">
+								<path d="M186.376,273.726a3.077,3.077,0,0,0-2.094,5.419l11.066,9.683H9.692a3.078,3.078,0,1,0,0,6.155H203.539a3.077,3.077,0,0,0,2.026-5.392l-17.23-15.077a3.077,3.077,0,0,0-1.958-.788Z" transform="translate(-6.615 -273.724)"/>
+							</svg>
 						</div>
 					</li>
 				))}
 			</ul>
-			<div class="works-slider__buttons absolute bottom-[0] max-w-[440px] md:max-w-[1024px] px-[16px] h-[80px] md:px-[40px] w-[100%] left-[50%] transform -translate-x-[50%] z-[100]">
-				<!-- 戻る・進むボタン -->
-				<div class="swiper-button-prev works-slider__prev-button mt-[120px] md:mt-[420px]"></div>
-				<div class="swiper-button-next works-slider__next-button mt-[120px] md:mt-[420px]"></div>
-			</div>
+			<div class="swiper-button-prev works-slider__prev-button absolute top-[30%] md:!top-[130px] md:!left-[50%] md:translate-x-[-275px] w-[100%] z-[100]"></div>
+			<div class="swiper-button-next works-slider__next-button absolute top-[30%] md:!top-[130px] md:!right-[50%] md:translate-x-[275px] w-[100%] z-[100]"></div>
 		</div>
 
 		<section id="work-flow" class="work-flow max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="work-flow__inner px-[20px] md:px-[40px] w-[100%] mx-auto">
 				<SectionTitle title='― Work Flow' description='お仕事の流れ' />
-				<p class="mt-[32px]">
+				<p class="mt-[32px] text-[14px] md:text-[16px]">
 					以下は大まかなお仕事の流れです。詳細はお気軽にご相談ください。
 				</p>
-				<ul class="mt-[56px] flex flex-wrap justify-center items-center gap-[8px]">
-					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+				<ul class="mt-[56px] flex flex-wrap justify-center items-center gap-[40px] md:gap-[8px]">
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px]">
 						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
 							1
 						</span>
@@ -127,12 +129,12 @@ const worksPosts = await worksRes.json();
 							<img class="h-[69px] aspect-[49/66]" src="/images/img_flow1.svg" alt="ご相談・お見積り" width="49" height="66" />
 							<figcaption class="font-bold text-[18px]">ご相談・お見積り</figcaption>
 						</figure>
-						<p>
+						<p class="text-[15px]">
 							要件や納期、予算などお気軽にご相談ください。<br />
 							対応内容に応じてお見積りをお送りいたします。
 						</p>
 					</li>
-					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px]">
 						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
 							2
 						</span>
@@ -140,12 +142,12 @@ const worksPosts = await worksRes.json();
 							<img class="h-[69px] aspect-[86/69]" src="/images/img_flow2.svg" alt="コーディング" width="86" height="69" />
 							<figcaption class="font-bold text-[18px]">コーディング</figcaption>
 						</figure>
-						<p>
+						<p class="text-[15px]">
 							デザインカンプを元にコーディングを行います。<br />
 							コーディング後は品質チェックを行い調整します。
 						</p>
 					</li>
-					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px]">
 						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
 							3
 						</span>
@@ -153,12 +155,12 @@ const worksPosts = await worksRes.json();
 							<img class="h-[69px] aspect-[66/66]" src="/images/img_flow3.svg" alt="確認" width="66" height="66" />
 							<figcaption class="font-bold text-[18px]">確認</figcaption>
 						</figure>
-						<p>
+						<p class="text-[15px]">
 							お客様にコーディングしたサイトをご確認頂きます。<br />
 							不足部分の修正と対応を行います。
 						</p>
 					</li>
-					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[230px] border border-[#888] rounded-[8px]">
+					<li class="relative flex flex-col justify-center items-center gap-[12px] pt-[48px] p-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px]">
 						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
 							4
 						</span>
@@ -166,7 +168,7 @@ const worksPosts = await worksRes.json();
 							<img class="h-[69px] aspect-[64/64]" src="/images/img_flow4.svg" alt="納品" width="64" height="64" />
 							<figcaption class="font-bold text-[18px]">納品</figcaption>
 						</figure>
-						<p>
+						<p class="text-[15px]">
 							コーディング後のファイル一式を納品いたします。<br />
 							本番サーバーへのアップロードも対応可能です。
 						</p>
@@ -178,44 +180,106 @@ const worksPosts = await worksRes.json();
 		<section id="contact" class="contact max-w-[440px] md:max-w-[1024px] w-[100%] mx-auto pt-[60px] md:pt-[120px]">
 			<div class="contact__inner px-[20px] md:px-[40px] w-[100%] mx-auto">
 				<SectionTitle title='― Contact' description='お問い合わせはこちらからお願いします。' />
+				<div class="contact__contents w-[100%]">
+        <!-- フォーム部分 -->
+					<form action="submit" class="contact__forms w-[100%] max-w-[600px] mt-[32px] flex flex-col justify-center items-center gap-[24px]  mx-auto">
+						<div class="contact-form__inputs w-[100%] flex flex-col gap-[16px]">
+							<!-- お名前部分 -->
+							<div class="contact__form contact-form w-[100%] flex flex-col md:flex-row justify-center items-start md:justify-start md:items-start">
+								<div class="contact-form__title your-name__title w-[200px] flex-shrink-0">
+									<label for="your-name" class="font-bold text-[14px] md:text-[16px]">お名前</label>
+									<span class="contact-form__required text-[12px] text-red">必須*</span>
+								</div>
+								<div class="contact-form__body w-[100%] max-w-[400px] flex-shrink-0">
+									<input type="text" id="your-name" name="your-name" class="contact-form__input required w-[100%] max-w-[400px] h-[40px] border-[1px] p-[8px] border-[#888] rounded" placeholder="山田太郎" required />
+								</div>
+							</div>
+							<!-- メールアドレス -->
+							<div class="contact__form contact-form w-[100%] flex flex-col md:flex-row justify-center items-start md:justify-start md:items-start">
+								<div class="contact-form__title your-mail__title w-[200px] flex-shrink-0">
+									<label for="your-email" class="font-bold text-[14px] md:text-[16px]">メールアドレス</label>
+									<span class="contact-form__required text-[12px] text-red">必須*</span>
+								</div>
+								<div class="contact-form__body w-[100%] max-w-[400px] flex-shrink-0">
+									<input type="email" id="your-email" name="your-email" class="contact-form__input required w-[100%] max-w-[400px] h-[40px] border-[1px] p-[8px] border-[#888] rounded" placeholder="info@example.com" required />
+								</div>
+							</div>
+
+							<!-- お問い合わせ内容 -->
+							<div class="contact__form contact-form w-[100%] flex flex-col md:flex-row justify-center items-start md:justify-start md:items-start">
+								<div class="contact-form__title your-order w-[200px] flex-shrink-0">
+									<label for="your-order" class="font-bold text-[14px] md:text-[16px]">お問い合わせ内容</label>
+									<span class="contact-form__required text-[12px] text-red">必須*</span>
+								</div>
+								<div class="contact-form__body w-[100%] max-w-[400px] flex-shrink-0">
+									<select name="your-order" id="your-order" class="your-order required w-[100%] max-w-[400px] h-[40px] border-[1px] p-[8px] border-[#888] rounded" required>
+										<option value="" class="your-order__list">選択してください</option>
+										<option value="お見積り依頼" class="your-order__list">お見積り依頼</option>
+										<option value="Webに関するご相談" class="your-order__list">Webに関するご相談</option>
+										<option value="サーバーに関するご相談" class="your-order__list">サーバーに関するご相談</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- メッセージ部分 -->
+							<div class="contact__form contact-form your-message__wrapper w-[100%] flex flex-col md:flex-row justify-center items-start md:justify-start md:items-start">
+								<div class="contact-form__title last-title your-message w-[200px] pt-[8px] flex-shrink-0">
+									<label for="your-message" class="font-bold">メッセージ</label>
+									<span class="contact-form__required text-[12px] text-red">必須*</span>
+								</div>
+								<div class="contact-form__body w-[100%] max-w-[400px] flex-shrink-0">
+									<textarea name="your-message" id="your-message" class="contact-form__input--textarea required w-[100%] max-w-[400px] h-[150px] border-[1px] p-[8px] border-[#888] rounded" placeholder="お問い合わせ内容をご記載ください。" required></textarea>
+								</div>
+							</div>
+						</div>
+
+						<!-- プライバシーポリシー -->
+						<div class="contact__form contact-form">
+							<label class="privacy-policy">
+								<input type="checkbox" name="privacy-policy" class="contact-form__checkbox" /><span class="contact-form__checkbox__text text-[14px] md:text-[16px]"><a target="_blank" href="#" class="underline">プライバシーポリシー</a>に合意する</span>
+							</label>
+						</div>
+						<button type="submit" class="contact-form__button button inline-block w-[100%] max-w-[400px] md:w-[300px] bg-[#333] px-[24px] py-[10px]">
+							<span class="text-[#fff] font-bold">送信する</span>
+						</button>
+					</form>
+				</div>
+
 			</div>
 		</section>
 	</main>
-	<!-- 下記はテンプレート。カスタムフィールド全体取得する -->
-	<!-- {worksPosts.map((works: any) => (
-		<li class="works__item">
-			<div class="works__thumbnail">
-				<img src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+	<div class="modal relative" id="modal">
+		<div class="modal__overlay modal-close absolute w-[100%] h-[100%] cursor-pointer"></div>
+		<div class="swiper modal__slider mt-[8px] md:mt-[60px] max-w-[600px] w-[100%]">
+			<div class="swiper-wrapper">
+				{worksPosts.map((works: any) => (
+					<div class="swiper-slide modal__slide max-w-[600px] w-[100%] rounded-xl bg-[#fff] p-[16px] md:p-[32px]">
+						<div class="modal__thumbnail mx-auto max-w-[400px]">
+							<img class="aspect-[1200/630]" src={works.works_customFields.works_thumbnail[0]} alt={works.works_customFields.works_title[0]} />
+						</div>
+						<div class="modal__content mx-auto mt-[12px]">
+							<h3 class="modal__title text-[16px] font-bold">作品名：{works.works_customFields.works_title[0]}</h3>
+							<p class="modal__time text-[14px] font-bold mt-[12px]">制作時間：{works.works_customFields.works_time[0]}</p>
+							<div class="modal__detail leading-loose text-[10px] md:text-[12px] mt-[12px]">
+								<ShowHtml html={works.works_customFields.works_detail[0]} />
+							</div>
+							<span class=" text-[10px] md:text-[12px]">URL:</span><a target="_blank" href={works.works_customFields.works_url} class="modal__link text-[12px] underline">{works.works_customFields.works_url}</a>
+						</div>
+						<button class="modal-close close-button"></button>
+					</div>
+				))}
 			</div>
-			<div class="works__content">
-				<h3 class="works__title">{works.works_customFields.works_title[0]}</h3>
-				<p class="works__time">{works.works_customFields.works_time[0]}</p>
-				<div class="works__detail">
-					<ShowHtml html={works.works_customFields.works_detail[0]} />
-				</div>
-				<a href={works.works_customFields.works_url[0]} class="works__link">{works.works_customFields.works_url[0]} </a>
+			<div class="modal-buttons absolute top-[150px] max-w-[600px] w-[100%]">
+				<div class="swiper-button-prev modal-button-prev"></div>
+				<div class="swiper-button-next modal-button-next"></div>
 			</div>
-		</li>
-	))} -->
+		</div>
+	</div>
 
 </Layout>
 
 <style is:inline>
-
-	/* .fv__slider {
-		margin-top: -40px;
-	}
-
-	@media screen and (min-width: 768px) {
-		.fv__slider {
-			margin-top: initial;
-			margin-left: -150px;
-		}
-		.fv__text-content {
-		}
-	} */
-
-	.swiper-slide img {
+	.fv__slide img {
 		user-drag: none;
 		-webkit-user-drag: none;
 		-moz-user-select: none;
@@ -229,6 +293,192 @@ const worksPosts = await worksRes.json();
 	.fv__slide + .swiper-slide-next {
 		opacity: 0;
 	}
+
+	.swiper-button-prev::after,
+	.swiper-button-next::after {
+		display: none;
+	}
+
+	.works-slider__prev-button {
+		background-image: url('/images/works_prev.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 45px;
+		height: 45px;
+		background-color: #FFF;
+		border-radius: 50%;
+		opacity: 0.7;
+	}
+
+	.works-slider__next-button {
+		background-image: url('/images/works_next.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 45px;
+		height: 45px;
+		background-color: #FFF;
+		border-radius: 50%;
+		opacity: 0.7;
+	}
+
+	.works__arrow {
+		transition: transform 0.3s;
+	}
+
+	.works__button:hover .works__arrow {
+		transform: translateX(16px);
+	}
+
+
+	/* モーダル */
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		transition: opacity 0.3s;
+		pointer-events: none;
+		opacity: 0;
+		z-index: 999;
+		background-color: rgba(63, 63, 63, 0.8);
+		backdrop-filter: blur(5px);
+		visibility: hidden;
+	}
+
+	/* モーダルがactiveの時 */
+	.modal.is-active {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	/* モーダル背景のオーバーレイ部分 */
+	.modal__overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+
+	.modal__slide {
+		position: relative;
+		z-index: 1000;
+	}
+
+	.modal__content {
+		/* overflow-y: scroll; */
+		/* height: 500px; */
+	}
+
+	.modal__detail h2 {
+		font-size: 14px;
+		font-weight: bold;
+	}
+
+	.modal__detail {
+		/* font-size: 12px; */
+	}
+
+	.modal-button-prev {
+		background-image: url('/images/works_prev.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 30px;
+		height: 30px;
+		background-color: #FFF;
+		border-radius: 50%;
+		opacity: 0.7;
+	}
+
+	.modal-button-next {
+		background-image: url('/images/works_next.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 30px;
+		height: 30px;
+		background-color: #FFF;
+		border-radius: 50%;
+		opacity: 0.7;
+	}
+
+	.modal-close.close-button {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		background-image: url('/images/modal_close.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 45px;
+		height: 45px;
+		background-color: #FFF;
+		border-radius: 50%;
+		opacity: 0.7;
+	}
+
+	.modal__thumbnail img {
+		user-drag: none;
+		-webkit-user-drag: none;
+		-moz-user-select: none;
+	}
+
+	.contact-form__checkbox {
+		width: 1px;
+		height: 1px;
+		position: absolute;
+		clip: rect(0, 0, 0, 0);
+		overflow: hidden;
+	}
+
+	.contact-form__checkbox:checked + .contact-form__checkbox__text::after {
+		opacity: 1;
+	}
+
+	.contact-form__checkbox__text {
+		position: relative;
+		padding-left: 30px;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.contact-form__checkbox__text::before,
+	.contact-form__checkbox__text::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+
+	.contact-form__checkbox__text::before {
+		width: 24px;
+		height: 24px;
+		border-radius: 4px;
+		border: 1px solid #888;
+	}
+
+	.contact-form__checkbox__text::after {
+		width: 30px;
+		height: 28px;
+		left: -1px;
+		margin-top: -1.2px;
+		background: url('/images/check_icon.png') no-repeat center center/contain;
+		opacity: 0;
+	}
+	.contact-form__input:focus,
+	.contact-form__input--textarea:focus,
+	.your-order:focus,
+	.contact-form__checkbox:focus + .contact-form__checkbox__text::before {
+    border: 2px solid #888;
+		outline: none;
+  }
+
 </style>
 
 <script is:inline>
@@ -293,10 +543,13 @@ const worksPosts = await worksRes.json();
 			}
 		);
 	});
+
+
+
 </script>
 
 <script>
-import Swiper from 'swiper/bundle';
+	import Swiper from 'swiper/bundle';
 	import 'swiper/css/bundle';
 
 	// Swiperの設定
@@ -321,15 +574,15 @@ import Swiper from 'swiper/bundle';
 	// Swiperの設定
 	const worksSwiperConfig = {
 		loop: true,
-		speed: 500,
-		// autoplay: {
-		// 	delay: 0,
-		// 	disableOnInteraction: false,
-		// },
+		speed: 1000,
 		effect: 'slide',
 		centeredSlides: true,
 		slidesPerView: 1,
 		spaceBetween: 60,
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev",
@@ -337,21 +590,97 @@ import Swiper from 'swiper/bundle';
 		breakpoints: {
 			768: {
 				spaceBetween: 32,
-				slidesPerView: 2.2,
+				slidesPerView: 1.5,
 			},
 			1024: {
 				spaceBetween: 32,
-				slidesPerView: 3,
+				slidesPerView: 2,
 			},
-			1100: {
+			1200: {
+				spaceBetween: 64,
+				slidesPerView: 2.2,
+			},
+			1300: {
+				spaceBetween: 64,
+				slidesPerView: 2.5,
+			},
+			1600: {
 				spaceBetween: 64,
 				slidesPerView: 3,
 			},
+
+
 		}
 	};
 
 	document.addEventListener('DOMContentLoaded', () => {
 		new Swiper('.works__slider', worksSwiperConfig);
 	});
+
+	// Swiper の設定
+	const modalSwiperConfig =  {
+		loop: true,
+		effect: 'flip',
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+			},
+		centeredSlides: true,
+		spaceBetween: 4000, // 任意のマージン
+		slidesPerView: 1,
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+  const modalSwiper = new Swiper('.modal__slider', modalSwiperConfig);
+
+  // モーダル要素を取得
+  const modal = document.getElementById('modal') as HTMLElement;
+
+  // モーダルを開く処理
+  document.querySelectorAll('.modal-open').forEach(openButton => {
+    openButton.addEventListener('click', () => {
+      // data-modal 属性からスライド番号を取得
+			const modalIndex = parseInt((openButton as HTMLInputElement).dataset.modal?.toString() ?? '0', 10);
+      // Swiper で指定したスライドに移動
+      modalSwiper.slideToLoop(modalIndex);
+
+      // body と modal にスタイルを適用
+      document.body.classList.toggle('is-active');
+      modal.classList.add('is-active');
+
+      // スクロール禁止
+      disableScroll();
+    });
+  });
+});
+
+	// モーダルを閉じる処理
+	document.querySelectorAll('.modal-close').forEach(closeButton => {
+  // モーダル要素を取得
+  const modal = document.getElementById('modal') as HTMLElement;
+		closeButton.addEventListener('click', () => {
+			// body と modal からスタイルを削除
+			document.body.classList.toggle('is-active');
+			modal.classList.remove('is-active');
+
+			// スクロール許可
+			enableScroll();
+		});
+	});
+
+
+	// スクロール許可関数
+	function enableScroll() {
+		// body の `overflow` を元に戻す
+		document.body.style.overflow = '';
+	}
+
+	// スクロール禁止関数
+	function disableScroll() {
+		// body に `overflow: hidden` を設定
+		document.body.style.overflow = 'hidden';
+	}
+
+
 
 </script>
