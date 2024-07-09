@@ -5,11 +5,15 @@
 
 <header class="fixed top-0 left-0 w-[100%] h-[50px] md:h-[80px] z-[999]">
   <div class="header__inner h-inherit max-w-[440px] md:max-w-[1024px] px-[16px] md:px-[40px] w-[100%] mx-auto flex justify-between items-center">
-    <h1 class="Header__logo text-[20px]">Take's Portfolio</h1>
+    <h1 class="Header__logo text-[24px] font-ubuntu">
+      <a href="#">Take's Portfolio</a>
+    </h1>
     <nav class="header__nav hidden md:flex justify-end items-center gap-[24px]">
-      <a href="#about" class="">About</a>
-      <a href="#works" class="">Works</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" class="header__nav-link relative font-ubuntu hover__link">About</a>
+      <a href="#works" class="header__nav-link relative font-ubuntu hover__link">Works</a>
+      <a href="#services" class="header__nav-link relative font-ubuntu hover__link">Services</a>
+      <a href="#work-flow" class="header__nav-link relative font-ubuntu hover__link">Work flow</a>
+      <a href="#contact" class="header__nav-link relative font-ubuntu hover__link">Contact</a>
     </nav>
     <div class="drawers__wrapper flex flex-col items-end md:hidden">
       <div id="js-drawer-icon" class="drawer__icon w-[20px] h-[20px] md:hidden flex flex-col gap-[4px] justify-center items-center">
@@ -21,6 +25,8 @@
         <nav class="drawer__nav flex flex-col justyfy-center items-center px-[8px]">
           <a href="#about" class="block py-[16px]">- About -</a>
           <a href="#works" class="block py-[16px]">- Works -</a>
+          <a href="#services" class="block py-[16px]">- Services -</a>
+          <a href="#work-flow" class="block py-[16px]">- Work flow -</a>
           <a href="#contact" class="block py-[16px]">- Contact -</a>
         </nav>
       </div>
@@ -29,6 +35,24 @@
 </header>
 
 <style>
+  .header__nav-link::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #333;
+    bottom: -3px;               /*アンダーラインがaタグの下端から現れる*/
+    transform: scale(0, 1);     /*アンダーラインの縮尺比率。ホバー前はx方向に0*/
+    transform-origin: left top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の左端*/
+    transition: transform 0.3s; /*変形の時間*/
+  }
+
+  .header__nav-link:hover::after {
+    transform: scale(1, 1);     /*ホバー後、x軸方向に1（相対値）伸長*/
+  }
+
+
   .drawer__icon {
     cursor: pointer;
     & > span {
@@ -51,7 +75,7 @@
 
   @keyframes slideIn {
     from {
-      transform: translateY(-300px);
+      transform: translateY(-500px);
       opacity: 0;
     }
     to {
@@ -66,13 +90,13 @@
       opacity: 1;
     }
     to {
-      transform: translateY(-300px);
+      transform: translateY(-500px);
       opacity: 0;
     }
   }
 
   .drawer__menu {
-    transform: translateY(-300px);
+    transform: translateY(-500px);
     animation: slideOut 0.3s ease-in-out;
   }
 
@@ -90,4 +114,30 @@
     drawerIcon.classList.toggle('open');
     drawerMenu.classList.toggle('open__menu');
   });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			const speed = 500;
+			const id = this.getAttribute('href');
+			const target = id === "#" ? document.documentElement : document.querySelector(id);
+			const position = target.offsetTop;
+
+			window.scrollTo({
+				top: position,
+				behavior: 'smooth'
+			});
+		});
+	});
+
+  document.querySelectorAll('#js-drawer-menu a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document.getElementById('js-drawer-icon').classList.remove('open');
+    document.getElementById('js-drawer-menu').classList.remove('open__menu');
+  });
+});
+
 </script>

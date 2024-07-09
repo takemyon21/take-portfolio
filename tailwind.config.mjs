@@ -5,8 +5,7 @@ export default {
     extend: {
       fontFamily: {
         noto: 'Noto Sans JP, sans-serif',
-        hiragino: 'hiragino-kaku-gothic-pron, sans-serif;',
-        din: 'din-2014, sans-serif;'
+        ubuntu: 'Ubuntu'
       },
       colors: {
         black: '#333333',
