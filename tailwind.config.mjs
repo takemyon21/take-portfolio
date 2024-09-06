@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        noto: 'Noto Sans JP, sans-serif',
+        noto: 'Noto Sans JP',
         ubuntu: 'Ubuntu'
       },
       colors: {

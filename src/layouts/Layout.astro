@@ -5,7 +5,6 @@ interface Props {
 };
 
 const { title, description } = Astro.props;
-const socialImageURL = new URL('/images/preview.png', Astro.url);
 const siteName = "Take's Portfolio";
 const twitterCard = "summary_large_image";
 import Header from '@components/Header.astro';
@@ -19,9 +18,6 @@ import { ViewTransitions } from "astro:transitions";
 		<meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- あとで消せ -->
-		<meta name="robots" content="noindex" />
-		<!-- あとで消せ -->
 
     <!-- from here is TDK -->
 		<title>{title}</title>
@@ -32,23 +28,23 @@ import { ViewTransitions } from "astro:transitions";
     <meta property="og:type" content={Astro.url.pathname === '/' ? 'website' : 'article'} />
     <meta property="og:description" content={description} />
     <meta property="og:title" content={title} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:url" content="https://t-portfolio.itouke.info/" />
+    <meta property="og:image" content="https://t-portfolio.itouke.info/images/OGP.jpg" />
     <meta property="og:site_name" content={siteName} />
     <meta name="twitter:card" content={twitterCard} />
     <!-- to here is OGP -->
 
-    <meta name="theme-color" content="⑧サイトカラー（このサイトのカラー）" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- from here is favicon -->
-    <link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
-    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
     <!-- to here is favicon -->
 
-    <link rel="canonical" href="④リンク（このページのURLを入力）" />
+    <link rel="canonical" href="https://t-portfolio.itouke.info/" />
 
     <!-- from here is css -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,7 +72,7 @@ import { ViewTransitions } from "astro:transitions";
 
 <style is:global>
 	* {
-		font-family: 'Noto Sans JP, sans-serif';
+		font-family: "Noto Sans JP";
 		color: #333;
 	}
 	/* html {

@@ -16,20 +16,20 @@ const worksRes = await fetch(`https://itouke.wpx.jp/tw-wordpress/wp-json/wp/v2/$
 const worksPosts = await worksRes.json();
 ---
 
-<Layout title="Take's Portfolio" description="Webコーダーたけみょんのポートフォリオサイトです。">
-	<main class="w-[100%] mt-[80px] md:mt-[140px]">
+<Layout title="Take's Portfolio" description="Webサイトのコーディングはお任せください！企業サイトから愉快なサイトまで幅広く対応します！Webコーダーたけみょんのポートフォリオサイトです。">
+	<main class="w-[100%] mt-[80px] md:mt-[140px] font-noto">
 		<!-- FV -->
 		<div class="fv max-w-[440px] md:max-w-[1024px] w-[100%] px-[16px] md:px-[40px] md:mt-[48px] flex flex-col md:flex-row justify-center items-start md:items-center gap-[16px] md:gap-[48px] mx-auto">
 			<div class="fv__text-content inline-block max-w-[240px] md:max-w-[360px] w-[100%] z-[100] p-[16px] md:p-[30px] shadow-xl rounded-[16px] md:rounded-[30px] bg-white flex-shrink-0">
 				<h2 id="ease-in" class="text-[24px] md:text-[36px] fv__title relative flex justify-start items-center gap-[0.2px] font-bold">Take's&nbsp;Portfolio</h2>
 				<div id="title" class="fv__text-wrapper">
-					<p id="upper-text" class="fv__text--upper text-[12px] md:text-[18px] flex justify-start items-center gap-[0.2px]">Webサイトからサーバーまで。</p>
-					<p id="middle-text" class="fv__text--middle text-[12px] md:text-[18px] flex justify-start items-center gap-[0.2px]">広い視点でお悩み解決いたします。</p>
+					<p id="upper-text" class="fv__text--upper text-[12px] md:text-[18px] flex justify-start items-center gap-[0.2px] font-noto">Webサイトからサーバーまで。</p>
+					<p id="middle-text" class="fv__text--middle text-[12px] md:text-[18px] flex justify-start items-center gap-[0.2px] font-noto">広い視点でお悩み解決いたします。</p>
 				</div>
 			</div>
 			<!-- FV swiper -->
 			<!-- Slider main container -->
-			<div class="swiper fv__slider max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] mt-[-60px] md:mt-0 ml-0 md:!ml-[clamp(-20rem,-35.4167rem+21.7014vw,-9.375rem)] flex-shrink-0" id="js-fv-slider">
+			<div class="swiper fv__slider max-w-[300px] max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] mt-[-60px] md:mt-0 ml-auto md:!ml-[clamp(-20rem,-35.4167rem+21.7014vw,-9.375rem)] mr-auto flex-shrink-0" id="js-fv-slider">
 				<!-- Additional required wrapper -->
 				<div class="swiper-wrapper fv__slides max-w-[300px] mx-auto max-h-[157.5px] md:max-w-[750px] md:max-h-[393.75px] md:min-w-[400px] md:min-h-[210px] w-[83.2vw] h-[43.75vw] transition !ease-linear">
 						<!-- Slides -->
@@ -236,7 +236,7 @@ const worksPosts = await worksRes.json();
 				</p>
 				<ul class="mt-[56px] flex flex-wrap justify-center items-center gap-y-[40px] md:gap-x-[8px] md:gap-y-[40px]">
 					<li class="work-flow__quotation relative flex flex-col justify-center items-center gap-[12px] pt-[32px] md:pt-[48px] px-[10px] pb-[10px] md:px-[16px] md:pb-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px] wow animate__animated animate__fadeInUp">
-						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+						<span class="absolute text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px] font-ubuntu">
 							1
 						</span>
 						<figure class="flex flex-col justify-center items-center gap-[8px]">
@@ -258,7 +258,7 @@ const worksPosts = await worksRes.json();
 						</p>
 					</li>
 					<li class="work-flow__coding relative flex flex-col justify-center items-center gap-[12px] pt-[32px] md:pt-[48px] px-[10px] pb-[10px] md:px-[16px] md:pb-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px] wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
-						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+						<span class="absolute text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px] font-ubuntu">
 							2
 						</span>
 						<figure class="flex flex-col justify-center items-center gap-[8px]">
@@ -273,7 +273,7 @@ const worksPosts = await worksRes.json();
 						</p>
 					</li>
 					<li class="work-flow__check relative flex flex-col justify-center items-center gap-[12px] pt-[32px] md:pt-[48px] px-[10px] pb-[10px] md:px-[16px] md:pb-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px] wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
-						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+						<span class="absolute text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px] font-ubuntu">
 							3
 						</span>
 						<figure class="flex flex-col justify-center items-center gap-[8px]">
@@ -296,7 +296,7 @@ const worksPosts = await worksRes.json();
 						</p>
 					</li>
 					<li class="work-flow__deliver relative flex flex-col justify-center items-center gap-[12px] pt-[32px] md:pt-[48px] px-[10px] pb-[10px] md:px-[16px] md:pb-[16px] w-[100%] max-w-[400px] md:max-w-[230px] border border-[#888] rounded-[8px] wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
-						<span class="absolute pt-[2px] text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px]">
+						<span class="absolute text-[32px] text-[#fff] bg-[#888] w-[48px] h-[48px] text-center top-[-24px] rounded-[4px] font-ubuntu">
 							4
 						</span>
 						<figure class="flex flex-col justify-center items-center gap-[8px]">
@@ -409,7 +409,10 @@ const worksPosts = await worksRes.json();
 									<button id="contact__cancel" class="contact-form__cancel button inline-block w-[100%] max-w-[150px] md:w-[150px] bg-[#fff] border border-[#333] px-[24px] py-[10px] rounded">
 										<span class="contact-form__cancel-text text-[#333] font-bold">戻る</span>
 									</button>
-									<button type="submit" id="contact__submit" class="contact-form__submit button inline-block w-[100%] max-w-[150px] md:w-[150px] bg-[#333] border border-[#333] px-[24px] py-[10px] rounded">
+									<button type="submit" id="contact__submit" class="contact-form__submit button inline-block w-[100%] max-w-[150px] md:w-[150px] bg-[#333] border border-[#333] px-[24px] py-[10px] rounded" class="g-recaptcha" 
+										data-sitekey="6Lcn9hUqAAAAAJIoiNcVxUTO-hipkD-fwEKi0Z6V" 
+										data-callback='onSubmit' 
+										data-action='submit'>
 										<span class="contact-form__submit-text text-[#fff] font-bold">送信する</span>
 									</button>
 								</div>
@@ -830,7 +833,7 @@ const worksPosts = await worksRes.json();
 
 	.default-option {
 		font-size: 16px;
-    color: #aaa;
+    color: #9ca3af;
     font-weight: 400;
   }
 
@@ -889,6 +892,14 @@ const worksPosts = await worksRes.json();
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
+<script is:inline src="https://www.google.com/recaptcha/api.js?render=6Lcn9hUqAAAAAJIoiNcVxUTO-hipkD-fwEKi0Z6V"></script>
+
+<script is:inline>
+	function onSubmit(token) {
+		document.getElementById("contact__form").submit();
+	}
+</script>
+
 <script is:inline>
 
 	// WOW.jsの初期化
@@ -896,7 +907,7 @@ const worksPosts = await worksRes.json();
 		{
 			boxClass: 'wow',
 			animateClass: 'animate__animated',
-			offset: 150,
+			offset: 50,
 			mobile: true,
 			live: true
 		}
